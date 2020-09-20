@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link href="{% static '/about.css'%}" rel="stylesheet" type="text/css">
+<div>
+    <div class="list">
+        <ul>
+            <li><a href="{% url 'home' %}">home</a></li>
+            <li><a href="{% url 'calculus' %}">calculus</a></li>   
+        </ul>
+    </div>
+    <div>
+        <h6>All reserved<br>
+        Cooperative Q'Kation
+        </h6>
+    </div>
+    <div>
+        <p>The meter element is used to display a gauge:</p>
+
+        <label for="disk_c">Disk usage C:</label>
+        <meter id="disk_c" value="2" min="0" max="10"></meter><br>
+        <label for="disk_d">Disk usage D:</label>
+        <meter id="disk_d" value="0.6">60%</meter>
+
+        <p><strong>Note:</strong> The meter tag is <span style="color:rgba(168, 218, 33, 0.664)">not supported</span> in Edge 12 (or earlier).</p>
+    </div>
+    <div>
+        <form action="/calculus" >
+            <fieldset>
+                                
+                <legend>Important staff</legend>
+                <label for="fname">First name:</label>
+                <input type="file" id="fname" name="fname"><br><br>
+                <label for="lname">Last name:</label>
+                <input type="range" id="lname" name="lname" value="89"><br><br>
+                
+                <input type="search"><br><br>
+            
+                <select name="cars" id="cars">
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="mercedes">Mercedes</option>
+                <option value="audi">Audi</option>
+                </select><br><br>
+                <div>
+                    <input type="number" value="123"><br><br>
+                    <input type="reset" value="reset"><br><br>
+                </div>
+                <input type="submit" value="submit"><br><br  >
+            </fieldset>
+            <table border="2px">
+                <tr>
+                  <th>Month</th>
+                  <th >Savings</th>
+                </tr>
+                <tr>
+                  <td>Janufgffngla</td>
+                  <td>$100</td>
+                </tr>
+                <tr>
+                  <td>February</td>
+                  <td>$80</td>
+                </tr>
+            </table>
+            <br><br>
+            <details>
+                <summary>something</summary>
+                <ul>
+                    <li>hety</li>
+                    <li>dfdfdg</li>
+                </ul>
+            </details>
+         
+        </form>
+    </div>
+ 
+</div>
+{% endblock content%}

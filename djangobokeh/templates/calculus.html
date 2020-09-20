@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Calculus</h1>
+<form name="calc">
+    <label for="display">Result:</label>
+    <input type="text" name="display" readonly><br><br>
+    <input type="text" name="firstnumber" id="f" class="f">
+    <input type="text" name="secondnumber"><br><br>
+    <input type="button" value="sum" onclick="calc.display.value=eval(calc.f.value+'+'+calc.secondnumber.value)">
+
+
+
+</form>
+{% endblock content%}
