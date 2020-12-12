@@ -1,15 +1,17 @@
 from django.shortcuts import render 
-from hist.counter import counter
+from outfunc.counter import counter, counter_general_eng
 from bokeh.embed import components
 from bokeh.plotting import figure, output_file, show, ColumnDataSource, save
 from bokeh.models.tools import HoverTool
 from bokeh.transform import factor_cmap # grdient
 from bokeh.palettes import all_palettes
 from bokeh.io import curdoc
-import ipywidgets
+from outfunc.counter import counter
+from outfunc.cezar import crypt , vigener_cipher, encrypt_vernam
 
 def home(request):
-    d=counter()
+    #d=counter()
+    """
     keys=list(d.keys())
     values=list(d.values())
     drop_down = ipywidgets.Dropdown(options=['az', 'za', 'asc', 'desc'],
@@ -32,18 +34,15 @@ def home(request):
             values=list(sorted_d.values())[::-1]
             keys=list(sorted_d.keys())[::-1]
             
-
+    """
     context={}
 
     #look at template bokeh_test
     #look how choose spot where to plot it
-    print("here")
-    print(request.method)
+    """
     if request.method!="POST":
-        print("get form")
-        print(request.GET.get("az"))
+
         if request.POST.get("az"):
-            print("come to az")
             d=counter()
             keys=list(d.keys())
             values=list(d.values())
@@ -51,6 +50,7 @@ def home(request):
 
             keys=list(d.keys()).reverse()
             values=list(d.values()).reverse()
+    
 
     p = figure(
         x_range=keys,
@@ -71,14 +71,105 @@ def home(request):
     )
     p.xaxis.major_label_text_font_size="14pt"
     script, div = components(p)
+    print(type(div))
+    print(div)
     context["script"]=script
     context["div"]=div
-    ipywidgets.interact(change_value, option=drop_down)
-    curdoc()._set_title("sds")
+    """
     return render(request,"index.html",context)
-
+def cryptology(request):
+        
+    return render(request,"cryptology/crypting.html")
 def calculus(request):
     return render(request,"calculus.html")
 
 def about(request):
     return render(request, "about.html")
+
+def cezar(request):
+    context={}
+    if request.method=="POST":
+        selected=request.POST.get("select")
+        filed=request.POST.get("file")
+        uploaded1 = request.FILES['file']
+        contentOfFile = uploaded1.read()
+        d=counter(contentOfFile.decode("utf-8"))
+
+        sorted_d={k: v for k, v in sorted(d.items(), key=lambda item: item[1])}
+        v=list(sorted_d.values())
+        k=list(sorted_d.keys())
+
+        if selected == "az":
+            k=list(d.keys())
+            source=ColumnDataSource(data=dict(x=list(d.keys()),y=list(d.values())))
+        elif selected == "za":
+            k=list(d.keys())[::-1]
+            source=ColumnDataSource(data=dict(x=list(d.keys())[::-1],y=list(d.values())[::-1]))
+        elif selected == "asc":
+            source=ColumnDataSource(data=dict(x=k,y=v))
+        elif selected == "desc":
+            k=k[::-1]
+            source=ColumnDataSource(data=dict(x=k[::-1],y=v[::-1]))
+
+        hover=HoverTool()
+        hover.tooltips = """
+  <div>
+    <h3>@x</h3>
+    <div><strong>Repeats: </strong>@y</div>
+  </div>
+"""
+        p = figure(
+                x_range=k,
+        plot_width=900,
+        plot_height=400,
+        title="Histogram",
+        y_axis_label="Repeats"
+    )
+        p.vbar(
+                x='x',
+                top='y',
+                width=0.4,
+                fill_alpha=0.7, 
+                source=source
+    )
+        p.add_tools(hover)
+        script, div = components(p)
+
+        context["script"] = script
+        context["div"] = div
+
+    return render(request, "cryptology/cezar.html",context)
+
+def freq(request):
+    #key='qazwsxedcrfvtgbyhnujmikolp'
+    key = ''
+    context={}
+    outputtext='something'
+    if request.method=="POST":
+        text=request.POST.get("intext")
+        key=str(request.POST.get("key"))
+        selected=request.POST.get("select")
+        if text:
+            if selected=='en':
+                print('here')
+                outputtext=encrypt_vernam(text,key)
+            elif selected=='de':
+                outputtext=encrypt_vernam(text,key,True)
+        else:
+            uploaded1 = request.FILES['file']
+            contentOfFile = uploaded1.read()
+            if selected=='en':
+                outputtext = encrypt_vernam(contentOfFile.decode("utf-8"),key)
+            elif selected=='de':
+                outputtext = encrypt_vernam(contentOfFile.decode("utf-8"),key,True)
+            text=contentOfFile.decode("utf-8")
+        context['val']=outputtext
+        context['valin']=text
+        
+
+     
+    context['val']=outputtext
+    return render(request, "cryptology/freq.html",context)
+
+def finmath(request):
+    return render(request,"finmath.html")

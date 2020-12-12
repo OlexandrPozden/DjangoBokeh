@@ -1,0 +1,350 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<link href="{% static 'cryptology/crypting.css'%}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+<div class="bg">
+
+    <!--
+    <div data-v-30de93fe="" data-v-1fee7504="" class="layers-wrapper flex column bottom-shadow w34 transition-all">
+        <header data-v-30de93fe="" class="pt2 pb2 pr4 pl4 flex justify-content-space-between"> Layers
+            <button data-v-30de93fe="" type="button" class="el-button w6 h6 vertical-align p2 el-button--info el-button--mini is-circle" title="Layers togglers">
+                <i class="el-icon-info">
+
+                </i>
+            </button>
+        </header>
+        <div data-v-30de93fe="" id="layers-info-wrapper" class="transition-all active">
+            <div data-v-30de93fe="" class="mt1 mb1 w-fit-full el-divider el-divider--horizontal">
+                
+            </div>
+            <div data-v-30de93fe="" class="flex column">
+                <div data-v-30de93fe="" class="box p1 mb1 inline-flex justify-content-space-between pr4 pl4 light">
+                    <span data-v-30de93fe="" class="capitalize">
+                        cls </span>
+                    <div data-v-30de93fe="" role="switch" aria-checked="true" class="el-switch ml2 mt1 is-checked">
+                        <input type="checkbox" name="" true-value="true" class="el-switch__input">
+                        
+                        <span class="el-switch__core" style="width: 40px;">
+
+                        </span>
+                        
+                    </div>
+                </div>
+                <div data-v-30de93fe="" class="box p1 mb1 inline-flex justify-content-space-between pr4 pl4 light"><span data-v-30de93fe="" class="capitalize"> ixps </span>
+                    <div data-v-30de93fe="" role="switch" aria-checked="true" class="el-switch ml2 mt1 is-checked">
+                        <input type="checkbox" name="" true-value="true" class="el-switch__input">
+                        <span class="el-switch__core" style="width: 40px;"></span>
+                        
+                    </div>
+                </div>
+                <div data-v-30de93fe="" class="box p1 mb1 inline-flex justify-content-space-between pr4 pl4 light"><span data-v-30de93fe="" class="capitalize"> Facilities </span>
+                    <div data-v-30de93fe="" role="switch" aria-checked="true" class="el-switch ml2 mt1 is-checked">
+                        <input type="checkbox" name="" true-value="true" class="el-switch__input">
+                        <span class="el-switch__core" style="width: 40px;"></span>
+                        
+                    </div>
+                </div>
+                <div data-v-30de93fe="" class="box p1 mb1 inline-flex justify-content-space-between pr4 pl4 light"><span data-v-30de93fe="" class="capitalize"> Terrestrial Networks </span>
+                    <div data-v-30de93fe="" role="switch" aria-checked="true" class="el-switch ml2 mt1 is-checked">
+                        <input type="checkbox" name="" true-value="true" class="el-switch__input">
+                        <span class="el-switch__core" style="width: 40px;"></span>
+                        
+                    </div>
+                </div>
+                <div data-v-30de93fe="" class="box p1 mb1 inline-flex justify-content-space-between pr4 pl4 light"><span data-v-30de93fe="" class="capitalize"> Subsea Cables </span>
+                    <div data-v-30de93fe="" role="switch" aria-checked="true" class="el-switch ml2 mt1 is-checked">
+                        <input type="checkbox" name="" true-value="true" class="el-switch__input">
+                        <span class="el-switch__core" style="width: 40px;"></span>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <div class="bg-stripe" style="z-index: -1;">
+
+    </div>
+    <div class="settings-trans">
+        <div class="content">
+            <header class="header-column">
+                <h6>View</h6>
+            </header>
+            <div class="divider"></div>
+            <div class="item">
+                <div class="slider">
+                    <input type="checkbox" checked id="info-switch">
+                </div>
+            </div>
+            <div class="item">
+                <div class="slider">
+                    <input type="checkbox" checked id="crypting-switch">
+                </div>
+            </div>
+            <div class="item">
+                <div class="slider">
+                    <input type="checkbox" checked>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tape">
+        <div class="info">
+            <div class="theme-text">
+
+            </div>
+            <div class="main-text">
+
+            </div>
+        </div>
+        <div class="crypting">
+            <div class="tab-header">
+                <div class="active">
+                    <i class="fas fa-code"></i>Encode
+                </div>
+                <div class="">
+                    <i class="fa fa-pencil-square-o"></i>Decode
+                </div>
+            </div>
+            <div class="tab-indicator">
+
+            </div>
+            <div class="tab-body">
+                <div class="encode active">
+                    here is some text
+                </div>
+                <div class="decode">
+                    <div class="types-crypt">
+                        <p class="freq active">Frequency Analysis</p>
+                        <p class="cezar">Cezar</p>
+                        <p class="monoalph">Monoalphabetic</p>
+                        <div></div>
+                    </div>
+                    <hr>
+                    <div class="top-decode">
+                        <input type="text" id="key-input" style="visibility: collapse;">
+
+                        <div class="substitution">
+
+                            <table border="1">
+
+                                <tr>
+                                    <th>A</th>
+                                    <th>B</th>
+                                    <th>C</th>
+                                    <th>D</th>
+                                    <th>E</th>
+                                    <th>F</th>
+                                    <th>G</th>
+                                    <th>H</th>
+                                    <th>I</th>
+                                    <th>J</th>
+                                    <th>K</th>
+                                    <th>L</th>
+                                    <th>M</th>
+                                    <th>N</th>
+                                    <th>O</th>
+                                    <th>P</th>
+                                    <th>Q</th>
+                                    <th>R</th>
+                                    <th>S</th>
+                                    <th>T</th>
+                                    <th>U</th>
+                                    <th>V</th>
+                                    <th>W</th>
+                                    <th>X</th>
+                                    <th>Y</th>
+                                    <th>Z</th>
+                                </tr>
+                                <tr>
+                                    <td><input type="text" maxlength="1"></td>
+                                    <td><input type="text" maxlength="1"></td>
+                                    <td><input type="text" maxlength="1"></td>
+                                    <td><input type="text" maxlength="1"></td>
+                                    <td><input type="text" maxlength="1"></td>
+                                    <td><input type="text" maxlength="1"></td>
+                                    <td><input type="text" maxlength="1"></td>
+                                    <td><input type="text" maxlength="1"></td>
+                                    <td><input type="text" maxlength="1"></td>
+                                    <td><input type="text" maxlength="1"></td>
+                                    <td><input type="text" maxlength="1"></td>
+                                    <td><input type="text" maxlength="1"></td>
+                                    <td><input type="text" maxlength="1"></td>
+                                    <td><input type="text" maxlength="1"></td>
+                                    <td><input type="text" maxlength="1"></td>
+                                    <td><input type="text" maxlength="1"></td>
+                                    <td><input type="text" maxlength="1"></td>
+                                    <td><input type="text" maxlength="1"></td>
+                                    <td><input type="text" maxlength="1"></td>
+                                    <td><input type="text" maxlength="1"></td>
+                                    <td><input type="text" maxlength="1"></td>
+                                    <td><input type="text" maxlength="1"></td>
+                                    <td><input type="text" maxlength="1"></td>
+                                    <td><input type="text" maxlength="1"></td>
+                                    <td><input type="text" maxlength="1"></td>
+                                    <td><input type="text" maxlength="1"></td>
+                                </tr>
+                            </table>
+                            <div class="key-operations">
+                                <input type="button" name="upload" value="upload key" class="upload key" onclick="upload_key()">
+                                <input type="file" id="upload-key" style="visibility: hidden; position:absolute; left:-1000px; width:1px; height: 1px;">
+                                <input type="button" name="download" value="download key" class="download key" onclick="download_key()">
+                                <a id="download_link_key" download="key.txt" href=”” style="visibility: hidden; position:absolute; left:-1000px; width:1px; height: 1px;">e</a>
+                            </div>
+                            <input type="button" value="translate" id="submit-decode" onclick="translateText()">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="body-decode">
+                        <div class="backdrop" id="backdrop">
+                            <div class="highlights">
+                                <pre></pre>
+                            </div>
+                        </div>
+                        <textarea class="textarea1-decode" rows="4" cols="30" name="outtext" id="in-highlights"></textarea>
+                        <textarea class="textarea2-decode" rows="4" cols="30" name="outtext" style="float: right;" id="tosave" readonly></textarea>
+                    </div>
+
+                    <div class="under-body-decode">
+                        <input type="file" id="upload-decode">
+                        <input type="button" onclick='save()' style="width: 100px; height: auto;" value="Save this">
+                        <a id="download_link" download="cryptedfile.txt" href=”” style="visibility: hidden; position:absolute; left:-1000px; width:1px; height: 1px;">e</a>
+                    </div>
+                    <br>
+                    <input type="button" value="Calc frequency" style="position: absolute; border-radius: 6px;" onclick="calcfreq()">
+                    <hr>
+                    <div class="analysis-2-columns" style="visibility: collapse;">
+                        <div class="most-frequent">
+                            <p>most-frequent</p>
+                            <div class="letters-column">
+                                <div class="letters one-letter">
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                </div>
+                                <br><br>
+                                <div class="letters two-letter">
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                </div>
+                                <br><br>
+                                <div class="letters three-letter">
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="most-common">
+                            <p>most-common</p>
+                            <div class="letters-column">
+
+                                <div class="letters one-letter">
+                                    <p>E-12.02%</p>
+                                    <p>T-9.10%</p>
+                                    <p>A-8.12%</p>
+                                    <p>O-7.68%</p>
+                                    <p>I-7.31%</p>
+                                    <p>N-6.95%</p>
+                                    <p>S-6.28%</p>
+                                    <p>R-6.02%</p>
+                                    <p>H-5.92%</p>
+                                    <p>D-4.32%</p>
+                                    <p>L-3.98%</p>
+                                    <p>U-2.88%</p>
+                                    <p>C-2.71%</p>
+                                    <p>M-2.61%</p>
+                                    <p>F-2.3%</p>
+                                    <p>Y-2.11%</p>
+                                    <p>W-2.09%</p>
+                                    <p>G-2.03%</p>
+                                    <p>P-1.82%</p>
+                                    <p>B-1.49%</p>
+                                    <p>V-1.11%</p>
+                                    <p>K-0.69%</p>
+                                    <p>X-0.17%</p>
+                                    <p>Q-0.11%</p>
+                                    <p>J-0.1%</p>
+                                    <p>Z-0.07%</p>
+
+                                </div>
+
+                                <div class="letters two-letter">
+                                    <p><b>The most common digraphs in order of frequency:</b> TH, HE, AN, IN, ER, ON, RE, ED, ND, HA, AT, EN, ES, OF, NT, EA, TI, TO, IO, LE, IS, OU, AR, AS, DE, RT, VE</p>
+                                    <p><b>The most common double letters in order of frequency:</b> SS, EE, TT, FF, LL, MM, OO</p>
+                                    <p><b>The most common trigraphs in order of frequency:</b> THE, AND, THA, ENT, ION, TIO, FOR, NDE, HAS, NCE, TIS, OFT, MEN</p>
+                                    <br><br>
+                                    <p><b>The most common first letter in a word in order of frequency:</b> T, O, A, W, B, C, D, S, F, M, R, H, I, Y, E, G, L, N, O, U, J, K</p>
+                                    <p><b>The most common last letter in a word in order of frequency:</b> E, S, T, D, N, R, Y, F, L, O, G, H, A, K, M, P, U, W</p>
+                                </div>
+                                <div class="letters three-letter">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="{% static '/crypting.js' %}"></script>
+{% endblock content %}

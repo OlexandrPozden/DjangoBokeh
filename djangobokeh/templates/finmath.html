@@ -1,0 +1,116 @@
+{% load static%} {% block content %}
+<link href="{% static 'finmath/finmath.css'%}" rel="stylesheet" type="text/css">
+<div class="body">
+    <h1>Financial mathematics</h1>
+    <hr class="top">
+    <div class="content">
+        <article>
+            <h2>Пільгові позики та кредити</h2>
+            <p>
+                У деяких випадках довготермінові позики та кредити можуть виплачуватися на пільгових для боржника умовах. Найбільш поширеними такими пільгами є низька ( у порівнянні з ринковою) відсоткова ставка та (або) пільговий період.<br> Сайт Financial
+                mathematics був розроблений для того, щоб допомогти <a href="#calculator">розвязати задачі</a> з фінансової математики на тему пільгові позики та кредити. За допомогою програмного забезпечення Financial mathematics можна <a href="#calculator">розвязати</a>                будь-яку поставлену задачу.
+            </p>
+        </article>
+        <section>
+            <h3>Умовні позначення</h3>
+            <p>Для планування погашення заборгованості будемо використовувати наступні позначення: <i>D</i> – величина заборгованості, <i>Y</i> – термінова виплата, <i>I</i> – проценти за позикою, <i>R</i> – витрати на погашення основної частини боргу,
+                <i>g</i> – відсоткова ставка за позикою, <i>n</i> – тривалість позики, <i>L</i> – тривалість пільгового періоду. За означенням витрати на обслуговування боргу (термінова виплата) становлять <i>Y = I + R</i> .</p>
+            <p>Для аналізу пільгових позик та кредитів використовують так званий <i>грант-елемент</i>, який визначає умовну втрату кредитора у зв’язку із використанням нижчої за ринкову відсоткової ставки.<br>Розраховують <i>абсолютний грант-елемент</i>                <b>W</b>:<br>
+                <div class="flex-cover">
+                    <div class="formula">W = D - G</div>
+                </div>де <b>D</b> – розмір позики, <b>G</b> – сучасна вартість погашувальних платежів.
+            </p>
+            <p>Поряд із абсолютним грант-елементом використовують також <i>відносний грант-елемент</i> <b>w</b>, який визначає відношення абсолютного грант-елементу до величини заборгованості, тобто
+                <div class="flex-cover">
+                    <div class="formula">w = W/D = 1 - G/D
+                    </div>
+                </div>
+            </p>
+            <p>Припустимо, що заборгованість та відсотки за нею виплачуються як постійні термінові виплати. Нехай позика видається на <i>n</i> років із пільговою відсотковою ставкою <i>g</i> . У той же час ринкова ставка відсотка становить <i>i</i> . Якщо
+                для погашення позики не вводиться пільговий період, то маємо, що термінова виплата становитиме <i>n</i>
+                <div class="flex-cover">
+                    <div class="formula">Y = D/a <sub>n,g</sub></div>
+                </div>
+            </p>
+            <p> Оскільки сучасна вартість усіх виплат боржника за ринковою відсотковою ставкою становить <b>n</b> i <b>Ya</b>, то в кінцевому результаті отримаємо:
+                <div class="flex-cover flex-more2">
+                    <div class="formula">W = D(1 - a<sub>n,i</sub>/a<sub>n,g</sub>)</div>
+                    <div class="formula">w = 1 - a<sub>n,i</sub>/a<sub>n,g</sub></div>
+                </div><br> де <i>a<sub>n,i</sub>, a<sub>n,g</sub></i> – коефіцієнти приведення постійних річних рент постнумерандо для відповідних відсоткових ставок <i>i < g</i> .
+
+            </p>
+        </section>
+        <section>
+            <h3>Приклади</h3>
+            <h4>Приклад 1.</h4>
+            <p>Нехай кредит у сумі 1 000 000грн. видано під 3.8% річних на 10 років. В цей же час ринкова відсоткова ставка становить 8% річних. Визначити умовну втрату для кредитора.</p>
+            <p><u>Розв'язання</u>: w = 1 - a<sub>10,8</sub>/ a<sub>10,3.8</sub> = 0.1809. <br> W = wD = 0.1809*1000000 = 1 809 000 (грн) </p>
+            <h4>Приклад 2.</h4>
+            <p>За даними прикладу 1 погашення і виплата відсотків відбувається щомісячно. Знайти термінову виплату і величину несплаченого основного боргу на початок 3-го року погашення</p>
+            <p><u>Розв'язання</u>: Нехай m = 12, g = 0.1, n = 4, D = 200000. Тоді: <br> Y = 507 254 (грн), t -1 = 12*2 -1 =23, m*n = 48. <br> S <sub>24</sub> = 114047.82 (грн)
+            </p>
+        </section>
+        <section>
+            <h3 id="calculator">Калькулятор</h3>
+            <p>Цей калькулятор на данний момент призначенний для вирішення задач двох типів: визначення умовної втрати для кредитора, та для обрахунку термінової виплати і величини несплаченого основного боргу в певний період часу. Для того, щоб <b>почати працювати</b>                потрібно вибрати, який тип задач Ви збираєтесь розвязати: (оберіть знизу)</p>
+            <div class="flex-cover flex-more2 buttons">
+                <div class="W-undefined button  formula active">Умовна втрата кредитора</div>
+                <div class="S-undefined button formula">Обчислення термінової виплати</div>
+            </div>
+            <hr class="divider-math">
+            <div class="input-value">
+                <div class="W-undefined pilga-checkbox active">
+                    <label for="Pilga">Пільговий період</label>
+                    <input type="checkbox" unchecked id="checkbox"></div>
+                <div class="W-undefined pilga">
+                    <label for="Pilga">Пільговий період L (в місяцях):</label>
+                    <input type="number" id="L" value="1">
+                </div>
+                <div>
+                    <label for="D">Сума кредиту D:</label>
+                    <input type="number" value="1000000" name="D" id="D">
+                </div>
+                <div class="W-undefined active">
+
+                    <label for="i">Ринкова ставка i (%):</label>
+                    <input type="number" name="i" id="i" value="8">
+                </div>
+                <div>
+                    <label for="n">Термін видачі кредиту n (в роках):</label>
+                    <input type="number" name="n" id="n" value="10">
+                </div>
+                <div>
+                    <label for="g">Пільгова ставка g (%):</label>
+                    <input type="number" name="g" id="g" value="3.8">
+                </div>
+                <div class="S-undefined">
+                    <label for="t">Період t (в місяцях):</label>
+                    <input type="number" name="t" id="t" value="24">
+                </div>
+                <div class="button formula" id="calculate">Обрахувати</div>
+
+            </div>
+            <hr class="divider-math">
+            <div class="results">
+                <div><b>Відповіді</b></div>
+                <div class="W-undefined active">
+                    <label for="W">W:</label>
+                    <input type="number" readonly name="W" id="W">
+                </div>
+                <div class="S-undefined">
+                    <label for="Y">Y:</label>
+                    <input type="number" readonly name="Y" id="Y">
+                    <label for="S">S:</label>
+                    <input type="number" readonly name="S" id="S">
+                </div>
+            </div>
+        </section>
+        <br><br><br>
+    </div>
+</div>
+<div class="footer">
+    <p>2020. All rights reserved.</p>
+    <p>Actually not really. Beware, page may contain not unique content</p>
+</div>
+<script type="text/javascript" src="{% static 'finmath/finmath.js' %}"></script>
+{%endblock content%}

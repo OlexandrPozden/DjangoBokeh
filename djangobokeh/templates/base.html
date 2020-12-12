@@ -1,7 +1,8 @@
-{% load static  %}
+{% load static %}
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,49 +11,54 @@
 
     <link rel="stylesheet" type="text/css" href="{% static '/nav.css' %}">
 
-    <link href = "https://cdn.pydata.org./bokeh/release/bokeh-2.2.1.min.css" rel = "stylesheet" type = "text/css" >
-    <link href = "https://cdn.pydata.org./bokeh/release/bokeh-widgets-2.2.1.min.css" rel = "stylesheet" type = "text/css" >
-    <link href = "https://cdn.pydata.org./bokeh/release/bokeh-tables-2.2.1.min.css" rel = "stylesheet" type = "text/css" >
- 
+    <link href="https://cdn.pydata.org./bokeh/release/bokeh-2.2.1.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.pydata.org./bokeh/release/bokeh-widgets-2.2.1.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.pydata.org./bokeh/release/bokeh-tables-2.2.1.min.css" rel="stylesheet" type="text/css">
+
     <title>Bokeh-Django</title>
-  </head>
-  <body>
-    <nav style="z-index: 1;">
-      <div class="navbar">
-        <button class="home-btn"><a href="{% url 'home'%}">Home</a></button>
-        <div class="projects">
-          <button>Projects</button>
-          <ul>
-            <li><a href="{% url 'calculus' %}">Python</a></li>
-            <li><a href="#">Machine Learning</a></li>
-            <li><a href="#">Cryptology</a></li>
-            <li><a href="{% url 'calculus' %}">NMLA</a></li>
-          </ul>
+</head>
+
+<body>
+    <nav style="z-index: 10 ;">
+        <div class="navbar" style="z-index: 10 ;">
+            <button class="home-btn"><a href="{% url 'home'%}">Home</a></button>
+            <div class="projects">
+                <button>Projects</button>
+                <ul style="z-index: 10 ;">
+                    <li><a href="{% url 'calculus' %}">Lagrange</a></li>
+                    <li><a href="{% url 'freq'%}">Cryptology1</a></li>
+                    <li><a href="{% url 'cezar'%}">Cryptology2</a></li>
+                    <li><a href="{% url 'crypt' %}">in-DEVELOPMENT</a></li>
+                </ul>
+            </div>
+            <button class="about-btn"><a href="{% url 'about' %}">About</a></button>
         </div>
-        <button class="about-btn"><a href="{% url 'about' %}">About</a></button>
-      </div>
-      <button type="button" class="navbar-toggler" data-toggle="collapse" >
+        <button type="button" class="navbar-toggler" data-toggle="collapse">
         <span class="navbar-toggler-icon"></span>
       </button>
     </nav>
 
-    <div class="content" style="z-index: 0;">
-      {% block content %}
-      {% endblock content%}
+    <div class="content">
+        {% block content %} {% endblock content%}
     </div>
-   
+
 
 
 
     <!-- Optional JavaScript -->
-    <script type = "text/javascript" src = "https://cdn.pydata.org./bokeh/release/bokeh-2.2.1.min.js"> </script>
-    <script type = "text/javascript" src = "https://cdn.pydata.org./bokeh/release/bokeh-widgets-2.2.1.min.js"> </script>
-    <script type = "text/javascript" src = "https://cdn.pydata.org./bokeh/release/bokeh-tables-2.2.1.min.js"> </script>
-    <script type = "text/javascript" src = "https://cdn.bokeh.org/bokeh/release/bokeh-api-2.2.1.min.js"> </script>
+    <script type="text/javascript" src="https://cdn.pydata.org./bokeh/release/bokeh-2.2.1.min.js">
+    </script>
+    <script type="text/javascript" src="https://cdn.pydata.org./bokeh/release/bokeh-widgets-2.2.1.min.js">
+    </script>
+    <script type="text/javascript" src="https://cdn.pydata.org./bokeh/release/bokeh-tables-2.2.1.min.js">
+    </script>
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-api-2.2.1.min.js">
+    </script>
     {{script|safe}}
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-  </body>
+</body>
+
 </html>

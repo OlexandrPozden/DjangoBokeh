@@ -1,67 +1,89 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-body{
+
+body {
     height: 100vh;
-     
 }
-nav{ 
+
+nav {
+    z-index: 99;
     height: 60px;
-    background-color: #b94062;
-    box-shadow: rgba(0, 0, 0, 0.2) 0 2px 6px 0;
+    background-color: #3C8F87;
+    box-shadow: 0 4px 6px 0 rgba(94, 1, 64, 0.2);
 }
-.navbar{
+
+.navbar {
     width: 60%;
     display: flex;
     justify-content: space-around;
     align-items: center;
     margin: auto;
-
 }
-.projects{
+
+.projects {
     position: relative;
 }
-.projects ul{
+
+.projects ul {
     position: absolute;
     background: #f3ecee;
     margin-top: 10px;
+    margin-left: -20px;
     width: 200px;
     height: 200px;
     list-style-type: none;
     display: flex;
-    justify-content: space-around ;
+    justify-content: space-around;
     align-items: center;
     flex-direction: column;
     list-style: none;
-    border-radius: 5px; 
+    border-radius: 5px;
     opacity: 0;
-    pointer-events: none;
+    visibility: collapse;
     transform: translateY(-10px);
     transition: all 0.4s ease;
-   
-   
 }
 
 .projects a {
     text-decoration: none;
     color: black;
 }
-.navbar button, .navbar button a {
+
+.navbar button,
+.navbar button a {
+    margin-top: 3px;
     background: none;
     border: none;
-    color: #f3ecee;
+    color: #EFEFEF;
     text-decoration: none;
     font-size: 18px;
     cursor: pointer;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
 }
-.navbar button:hover, .navbar button a:hover{
+
+.navbar button:hover,
+.navbar button a:hover {
     color: #ffffff;
-
+    font-size: 120%;
 }
 
-.projects li{
+.projects li a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.projects li {
     width: 100%;
     height: 100%;
     display: flex;
@@ -69,11 +91,13 @@ nav{
     align-items: center;
     border-radius: 5px;
 }
-.projects li:hover{
+
+.projects li:hover {
     background-color: #db5178;
 }
-.projects button:focus + ul{
+
+.projects button:focus+ul {
     opacity: 1;
-    pointer-events: all;
+    visibility: visible;
     transform: translateY(0px);
 }

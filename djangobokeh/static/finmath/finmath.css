@@ -1,0 +1,161 @@
+body {
+    margin: 0;
+    padding: 0;
+    left: 0;
+    top: 0;
+    background-color: rgba(240, 238, 238, 0.979);
+}
+
+h1 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+hr.top {
+    width: 70%;
+}
+
+.content {
+    margin: 0 20%;
+}
+
+.formula {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(230, 204, 204, 0.959);
+    border-radius: 3px;
+    color: rgb(114, 61, 61);
+    font-weight: bold;
+    height: 30px;
+    width: 180px;
+}
+
+.flex-cover {
+    display: flex;
+    justify-content: center;
+}
+
+.flex-more2 {
+    justify-content: space-evenly;
+}
+
+.footer {
+    height: 20vh;
+    font-size: small;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+@media( max-width: 459px) {
+    hr.top {
+        width: 100%;
+    }
+    .content {
+        margin: 0px 15px;
+    }
+    .flex-more2 {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .flex-more2 .formula {}
+}
+
+.button {
+    background-color: tomato;
+    box-shadow: 0px 1px 2px 1px black;
+    color: snow;
+    width: 200px;
+    font-size: x-small;
+    font-weight: lighter;
+    cursor: pointer;
+}
+
+.buttons .active {
+    transform: scale(0.9);
+    box-shadow: 0px 0.5px 0.5px 0.5px black;
+    background-color: rgb(104, 104, 104);
+    color: darkgray;
+}
+
+.divider-math {
+    width: 50%;
+}
+
+@media(max-width: 700px) {
+    .flex-more2 {
+        height: 70px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .flex-more2 .formula {}
+}
+
+.input-value {
+    position: relative;
+    left: 0px;
+    width: auto;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.results {
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.input-value .W-undefined,
+.input-value .S-undefined,
+.results .W-undefined,
+.results .S-undefined {
+    position: absolute;
+    display: block;
+    left: -1500px;
+    width: 1px;
+}
+
+.input-value .active {
+    position: relative;
+    display: flex;
+    left: 0px;
+    width: auto;
+}
+
+.results .active {
+    position: relative;
+    left: 0px;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.input-value .boxactive {
+    position: relative;
+    display: flex;
+    left: 0px;
+    width: auto;
+}
+
+.input-value .pilga {
+    position: absolute;
+    display: block;
+    left: -1500px;
+    width: 1px;
+}

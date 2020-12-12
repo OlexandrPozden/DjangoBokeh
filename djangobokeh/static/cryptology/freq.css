@@ -1,0 +1,58 @@
+.leftside {
+    width: 200px;
+}
+
+.leftside input {
+    width: 100%;
+}
+
+.composer_rich_textarea {
+    overflow: none;
+    overflow-y: scroll;
+    border-radius: 0;
+    border: 0;
+    box-shadow: none;
+    outline: none;
+    box-shadow: 0 1px 0 0 #e8e8e8;
+    padding: 1px 28px 1px 0;
+    position: relative;
+    margin: 0;
+    min-height: 52px;
+    line-height: 20px;
+    height: auto;
+    box-sizing: border-box;
+    max-height: 284px;
+    overflow: auto;
+    user-select: text;
+}
+
+textarea {
+    text-rendering: auto;
+    color: -internal-light-dark(black, white);
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    appearance: textarea;
+    background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
+    -webkit-rtl-ordering: logical;
+    flex-direction: column;
+    resize: auto;
+    cursor: text;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    border-width: 1px;
+    border-style: solid;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(195, 195, 195));
+    border-image: initial;
+    padding: 2px;
+}
+
+.key-operations {
+    position: relative;
+}

@@ -31,8 +31,8 @@
 .tab-bmi .tabcontent{
     display: none;
     padding: 6px 12px;
-    --webkit-animation: fadeEffect 10s;
-    animation: fadeEffect 10s;
+    --webkit-animation: fadeEffect 1.5s;
+    animation: fadeEffect 2s;
 }
 @-webkit-keyframes fadeEffect{
     from {opacity: 0;}
