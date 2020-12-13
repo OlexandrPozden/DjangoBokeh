@@ -8,5 +8,6 @@ urlpatterns=[
     path('cezar/',cezar, name="cezar"),
     path('freq/',freq, name="freq"),
     path('finmath/', finmath, name="finmath"),
-    path('cryptology/rsa',rsa_view,name="rsa")
+    path('cryptology/rsa',rsa_view,name="rsa"),
+    path('cryptology/rsa/key', rsa)
 ]
