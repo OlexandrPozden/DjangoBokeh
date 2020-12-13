@@ -8,6 +8,8 @@ from bokeh.palettes import all_palettes
 from bokeh.io import curdoc
 from outfunc.counter import counter
 from outfunc.cezar import crypt , vigener_cipher, encrypt_vernam
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 def home(request):
     #d=counter()
@@ -173,3 +175,10 @@ def freq(request):
 
 def finmath(request):
     return render(request,"finmath.html")
+
+##### new something here))
+@api_view(['GET','POST'])
+def rsa(request):
+    if request.method == 'POST':
+        print(request.data)
+    return Response({'action':'it is finished'})

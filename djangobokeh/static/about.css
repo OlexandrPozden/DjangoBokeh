@@ -1,5 +1,29 @@
-.list ul{
+.main {
+    position: ;
+    margin-top: 30px;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+}
+
+.main .item {
     width: 200px;
-    height: 200px;
-    background-color: violet;
+    border-radius: 5px;
+    background-color: antiquewhite;
+    padding: 10px 10px;
+}
+
+a {
+    color: inherit;
+    width: 100%;
+    height: 100%;
+}
+
+.item:hover {
+    width: 200px;
+    background-color: azure;
 }
