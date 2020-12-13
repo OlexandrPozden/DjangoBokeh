@@ -177,6 +177,9 @@ def finmath(request):
     return render(request,"finmath.html")
 
 ##### new something here))
+def rsa_view(request):
+    return render(request,"cryptology/rsa.html")
+
 @api_view(['GET','POST'])
 def rsa(request):
     if request.method == 'POST':
