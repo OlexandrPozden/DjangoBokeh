@@ -184,4 +184,6 @@ def rsa_view(request):
 def rsa(request):
     if request.method == 'POST':
         print(request.data)
+    else:
+        return Response({"key":"lkjfgd@2343940fg"})
     return Response({'action':'it is finished'})

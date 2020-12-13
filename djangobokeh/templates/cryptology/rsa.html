@@ -1,0 +1,84 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<link href="{% static 'cryptology/freq.css'%}" rel="stylesheet" type="text/css">
+<div class="form">
+    <div class="main-div">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="leftside">
+                <textarea rows="4" cols="50" name="intext" id="input" class="superunique">{{valin}}</textarea>
+            </div>
+            <div class="midleside">
+                <input type="file" name="file" id="upload-text">
+                <br><br><br><b id="warning" style="color: brown;"></b><br>
+                <label for="key">Key:</label>
+                <input type="text" name="key" value='{{key}}' style="width:220px;" required id="key">
+                <input type="button" value="DownloadKey" class="key-operations download" onclick="downloadKey()">
+                <input type="button" value="UploadKey" onclick="uploadKey()">
+                <input type="button" value="GenerateKey" onclick="something()">
+                <input type="file" value="UploadKey" class="key-operations upload" id="upload-key" style="visibility: hidden; position:absolute; left:-1000px; width:1px; height: 1px;">
+                <a id="download_link_key" download="vernar_key.txt" href=”” style="visibility: hidden; position:absolute; left:-1000px; width:1px; height: 1px;">e</a>
+
+                <br><br>
+                <label for="select">Select what to do:</label>
+                <select name="select" required style="margin-left: 40px;">
+                    <option value="en">encode</option>
+                    <option value="de">decode</option>
+                </select><br><br><br>
+                <input type="submit" value="Translate!">
+                <br><br><br><br>
+                <textarea rows="4" cols="50" name="outtext" readonly id="tosave">{{val}}</textarea><br><br>
+
+            </div>
+        </form>
+
+        <input type="button" onclick='save()' style="width: 100px; height: 50px;" value="Save this"><br><br>
+        <a id="download_link" download="cryptedfile.txt" href=”” style="visibility: hidden; position:absolute; left:-1000px; width:1px; height: 1px;" target="_blank" onclick="this.style.visibility='collapse';">Download as Text File</a>
+
+        <div class="rightside"></div>
+    </div>
+</div>
+<script type="text/javascript" src="{% static '/cryptology/js/rsa.js' %}"></script>
+<script type='text/javascript'>
+    function doDL(s) {
+        function dataUrl(data) {
+            return "data:x-application/text," + escape(data);
+        }
+        window.open(dataUrl(s));
+    };
+    console.log('at leat here');
+
+    function something() {
+        console.log('vgfkdlg');
+        var lenText = document.getElementsByClassName("superunique")[0].value.length;
+        var randomShift = Math.floor(Math.random() * lenText) + lenText + 5;
+        var key = '';
+
+        for (var i = 0; i < randomShift; i++) {
+            key += String.fromCharCode(Math.floor(Math.random() * 256));
+        }
+
+        document.getElementById('key').value = key;
+        console.log('maybe her');
+        let keyUpload = document.getElementById('key');
+        let textInput = document.getElementsByClassName("superunique")[0];
+        let warning = document.getElementById('warning');
+        keyUpload.addEventListener('change', () => {
+            console.log('or even her');
+            if (keyUpload.value.length < textInput.value.length) {
+                warning.innerHTML = 'For best security lenght key has to be bigger than length of message';
+            } else {
+                warning.innerHTML = '';
+            }
+        });
+        textInput.addEventListener('change', () => {
+            console.log('or even her');
+            if (keyUpload.value.length < textInput.value.length) {
+                warning.innerHTML = 'For best security lenght key has to be bigger than length of message';
+            } else {
+                warning.innerHTML = '';
+            }
+        });
+    }
+</script>
+{% endblock content %}
