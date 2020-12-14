@@ -9,7 +9,7 @@
         <div class="midleside">
             <input type="file" name="file" id="upload-text"><br><br>
             <label for="decrypt-check">Decrypt?</label>
-            <input type="checkbox" name="decrypt-check" checked>
+            <input type="checkbox" name="decrypt-check" id="choose" checked onclick="deOrEncode()">
             <br>
             <input type="button" value="GenerateKeys" onclick="generateKeys()" style="margin-left: 150px; width: 220px"><br> <br>
             <label for="key">Public key to <b>encrypt</b>:</label>
