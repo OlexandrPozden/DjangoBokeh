@@ -141,3 +141,45 @@ fileReaderPrivateKey.addEventListener('change', () => {
 function uploadPrivateKey() {
     fileReaderPrivateKey.click();
 }
+
+
+
+/// uploading message (plain text)
+let inputfile = document.getElementById('upload-plain-text');
+inputfile.addEventListener('change', () => {
+    console.log('before if');
+    let files = inputfile.files;
+
+    if (files.length == 0) return;
+    console.log('after now');
+    const file = files[0];
+
+    let reader = new FileReader();
+
+    reader.onload = (e) => {
+        const file = e.target.result;
+
+        const lines = file.split(/\r\n|\n/);
+        console.log('before message')
+        message.value = lines.join('\n');
+
+    };
+
+    reader.onerror = (e) => alert(e.target.error.name);
+
+    reader.readAsText(file);
+});
+
+
+/// downloading result (crypted text)
+
+function save() {
+    var text = document.getElementById('tosave').value;
+    var data = new Blob([text], { type: 'text/plain' });
+    var url = window.URL.createObjectURL(data);
+    document.getElementById('download_link').style.visibility = 'visible';
+    document.getElementById('download_link').href = url;
+    document.getElementById('download_link').click();
+    document.getElementById('download_link').style.visibility = 'collapse';
+
+}
