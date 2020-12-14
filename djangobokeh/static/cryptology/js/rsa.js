@@ -94,3 +94,25 @@ function downloadPrivateKey() {
     dlAnchorElem.setAttribute("download", "scene.json");
     dlAnchorElem.click();
 }
+
+let fileReaderPublicKey = document.getElementById('upload-public-key');
+
+fileReaderPublicKey.addEventListener('change', () => {
+
+    console.log('or even here');
+    var importedFile = fileReaderPublicKey.files[0];
+
+    var reader = new FileReader();
+    console.log('at least here');
+    reader.onload = function() {
+
+        var fileContent = JSON.parse(reader.result);
+        public_key.value = fileContent.encryption;
+        mod.value = fileContent.mod_N;
+    };
+    reader.readAsText(importedFile);
+});
+
+function uploadPublicKey() {
+    fileReaderPublicKey.click();
+}

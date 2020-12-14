@@ -100,11 +100,9 @@ function _generateRandomKey() {
     console.log(key);
 }
 
-console.log('fgdfgdfgd');
 
 function uploadKey() {
 
-    console.log('fgdfgdfgd');
 
 
     uploadKeyButton.click();
