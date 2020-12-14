@@ -79,6 +79,18 @@ function downloadPublicKey() {
     var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(storageObj));
     var dlAnchorElem = document.getElementById('download-public-key');
     dlAnchorElem.setAttribute("href", dataStr);
+    dlAnchorElem.setAttribute("download", "publicKey.json");
+    dlAnchorElem.click();
+}
+
+function downloadPrivateKey() {
+    const storageObj = {
+        decryption: private_key.value,
+        mod_N: mod.value,
+    }
+    var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(storageObj));
+    var dlAnchorElem = document.getElementById('download-private-key');
+    dlAnchorElem.setAttribute("href", dataStr);
     dlAnchorElem.setAttribute("download", "scene.json");
     dlAnchorElem.click();
 }
