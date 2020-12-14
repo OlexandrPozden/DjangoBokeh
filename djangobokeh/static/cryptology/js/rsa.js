@@ -66,3 +66,19 @@ function sendItems() {
         })
         .catch(error => console.error('Unable to add item.', error));
 }
+
+
+
+/// download part
+
+function downloadPublicKey() {
+    const storageObj = {
+        encryption: public_key.value,
+        mod_N: mod.value,
+    }
+    var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(storageObj));
+    var dlAnchorElem = document.getElementById('download-public-key');
+    dlAnchorElem.setAttribute("href", dataStr);
+    dlAnchorElem.setAttribute("download", "scene.json");
+    dlAnchorElem.click();
+}
