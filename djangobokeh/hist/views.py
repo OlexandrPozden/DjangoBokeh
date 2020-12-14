@@ -219,10 +219,16 @@ def get_d(e,phi,i = -1):
 @api_view(['GET','POST'])
 def rsa(request):
     if request.method == 'POST':
-        return Response({"another":"test"})
+        message = request.data['message']
+        key = int(request.data['key'])
+        N = int(request.data['N'])
+        result =''
+        for i in message:
+            result+=chr((ord(i)**key)%N)
+        return Response({"result":result})
     else:
-        p = nth_prime(randint(1,1000))  
-        q = nth_prime(randint(1,1000))
+        p = nth_prime(randint(1,100))  
+        q = nth_prime(randint(1,100))
         N = p*q
         phi = (p-1)*(q-1)
         e = get_e(phi, N)

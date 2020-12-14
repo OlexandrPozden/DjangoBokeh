@@ -3,6 +3,7 @@ const message = document.getElementById('message');
 const public_key = document.getElementById('public-key');
 const private_key = document.getElementById('private-key');
 const mod = document.getElementById('mod')
+const result = document.getElementById('tosave');
 
 const choose = document.getElementById('choose');
 
@@ -39,13 +40,18 @@ function generateKeys() {
 
 }
 
-function addItem() {
+function sendItems() {
 
     const item = {
-        message: false,
-        name: addNameTextbox.value.trim()
+        message: message.value,
+        key: null,
+        N: mod.value,
     };
-
+    if (choose.checked == true) {
+        item.key = private_key.value;
+    } else {
+        item.key = public_key.value;
+    }
     fetch(uri, {
             method: 'POST',
             headers: {
@@ -55,9 +61,8 @@ function addItem() {
             body: JSON.stringify(item)
         })
         .then(response => response.json())
-        .then(() => {
-            getItems();
-            addNameTextbox.value = '';
+        .then((data) => {
+            result.value = data.result;
         })
         .catch(error => console.error('Unable to add item.', error));
 }
