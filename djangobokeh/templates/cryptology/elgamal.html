@@ -8,26 +8,36 @@
         </div>
         <div class="midleside">
             <input type="file" name="file" id="upload-plain-text"><br><br>
-            <label for="decrypt-check">Decrypt?</label>
-            <input type="checkbox" name="decrypt-check" id="choose" checked onclick="deOrEncode()">
+            <input type="button" value="GenerateKeys" onclick="generateKeys()" style="margin-left: 97px; width: 220px"><br>
+            <label for="key">Public key: <b>p</b>:</label>
+            <input type="text" name="public-key-p" style="width:220px;" required id="public-key-p">
             <br>
-            <input type="button" value="GenerateKeys" onclick="generateKeys()" style="margin-left: 150px; width: 220px"><br> <br>
-            <label for="key">Public key to <b>encrypt</b>:</label>
-            <input type="text" name="public-key" style="width:220px;" required id="public-key">
-            <input type="button" value="DownloadKey" class="key-operations download" onclick="downloadPublicKey()">
+            <label for="public-key-g" style="margin-left:78px;"><b>g:</b></label>
+            <input type="text" name="public-key-g" style="width:220px;" required id="public-key-g">
+            <br>
+            <label for="public-key-y" style="margin-left:78px;"><b>y:</b></label>
+            <input type="text" name="public-key-y" style="width:220px; " required id="public-key-y">
+            <br>
+            <input type="button" value="DownloadKey" class="key-operations download" onclick="downloadPublicKey()" style="margin-left: 97px;">
             <input type="button" value="UploadKey" onclick="uploadPublicKey()">
             <input type="file" value="UploadKey" class="key-operations upload" id="upload-public-key" style="visibility: hidden; position:absolute; left:-1000px; width:1px; height: 1px;">
             <a id="download-public-key" href=”” style="visibility: collapse; position:absolute; left:-1000px; width:1px; height: 1px;">e</a>
             <br><br>
-            <label for="private-key">Private key to <b>decrypt</b>:</label>
+            <label for="private-key">Private key <b>x</b>:</label>
             <input type="text" name="private-key" style="width:220px;" required id="private-key">
-            <input type="button" value="DownloadKey" class="key-operations download" onclick="downloadPrivateKey()">
+            <br>
+            <input type="button" value="DownloadKey" class="key-operations download" onclick="downloadPrivateKey()" style="margin-left: 97px;">
             <input type="button" value="UploadKey" onclick="uploadPrivateKey()">
             <input type="file" value="UploadKey" class="key-operations upload" id="upload-private-key" style="visibility: hidden; position:absolute; left:-1000px; width:1px; height: 1px;">
             <a id="download-private-key" href=”” style="visibility: collapse; position:absolute; left:-1000px; width:1px; height: 1px;">e</a> <br><br>
-            <label for="mod">Module (N) :</label>
-            <input type="text" name="mod" style="width:220px;" required id="mod"> <br><br>
-            <input type="button" value="Translate!" onclick="sendItems()">
+            <br>
+            <input type="button" value="Sign message" style="margin-left: 97px; width: 220px; height:40px">
+            <br><br>
+            <label for="mod" style="margin-left:71px"><b>S1</b>:</label>
+            <input type="text" name="mod" style="width:220px;" required id="s1">
+            <br>
+            <label for="mod" style="margin-left:71px"><b>S2</b>:</label>
+            <input type="text" name="mod" style="width:220px;" required id="s2"> <br><br>
             <br><br><br><br>
             <textarea rows="4" cols="50" name="outtext" readonly id="tosave"></textarea><br><br>
 
