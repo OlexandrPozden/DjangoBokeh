@@ -12,6 +12,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from random import randint, choice
 from outfunc.rsa import is_coprime, get_e, get_d
+from primesieve import *
 
 def home(request):
     # d=counter()
@@ -196,7 +197,8 @@ def finmath(request):
 def rsa_view(request):
     return render(request, "cryptology/rsa.html")
 
-
+def elgamal_view(request):
+    return render(request, "cryptology/elgamal.html")
 
           
 @api_view(['GET','POST'])

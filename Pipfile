@@ -12,6 +12,7 @@ django = "*"
 ipywidgets = "*"
 djangorestframework = "*"
 primesieve = "*"
+crypto = "*"
 
 [requires]
 python_version = "3.8"

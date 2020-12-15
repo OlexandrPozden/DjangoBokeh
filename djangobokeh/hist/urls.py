@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import home, calculus, about, cezar, freq, cryptology, finmath, rsa_view,rsa
+from .views import home, calculus, about, cezar, freq, cryptology, finmath, rsa_view,rsa, elgamal_view
 
 urlpatterns=[ 
     path('',home,name="home"),
@@ -9,5 +9,6 @@ urlpatterns=[
     path('freq/',freq, name="freq"),
     path('finmath/', finmath, name="finmath"),
     path('cryptology/rsa',rsa_view,name="rsa"),
-    path('cryptology/rsa/api/key', rsa)
+    path('cryptology/rsa/api/key', rsa),
+    path('cryptology/elgamal',elgamal_view,name="elgamal"),
 ]
