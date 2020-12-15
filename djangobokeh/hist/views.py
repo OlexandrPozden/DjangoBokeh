@@ -11,8 +11,7 @@ from outfunc.cezar import crypt, vigener_cipher, encrypt_vernam
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from random import randint, choice
-import numpy as np
-from primesieve import *
+from outfunc.rsa import is_coprime, get_e, get_d
 
 def home(request):
     # d=counter()
@@ -199,22 +198,6 @@ def rsa_view(request):
 
 
 
-def is_coprime(x,y):
-    return np.gcd(x,y) == 1
-
-def get_e(phi, N):
-    for i in range(2, phi):
-        if is_coprime(i,phi) and is_coprime(i,N):
-            return i
-    return -1
-
-
-def get_d(e,phi,i = -1):
-    eq = -1
-    while eq!=1:
-        i+=1     
-        eq = (e*i)%phi
-    return i
           
 @api_view(['GET','POST'])
 def rsa(request):
