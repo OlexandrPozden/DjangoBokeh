@@ -13,6 +13,9 @@ ipywidgets = "*"
 djangorestframework = "*"
 primesieve = "*"
 crypto = "*"
+pycryptodome = "*"
+pycryptodomex = "*"
+libnum = "*"
 
 [requires]
 python_version = "3.8"

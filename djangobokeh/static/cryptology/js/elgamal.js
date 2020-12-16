@@ -1,6 +1,8 @@
-const uri = 'rsa/api/key';
+const uri = 'elgamal/api/generate-key';
 const message = document.getElementById('message');
-const public_key = document.getElementById('public-key');
+const public_key_p = document.getElementById('public-key-p');
+const public_key_g = document.getElementById('public-key-g');
+const public_key_y = document.getElementById('public-key-y');
 const private_key = document.getElementById('private-key');
 const mod = document.getElementById('mod')
 const result = document.getElementById('tosave');
@@ -31,9 +33,11 @@ function generateKeys() {
     fetch(uri)
         .then(response => response.json())
         .then(data => {
-            public_key.value = data.publicKey;
+            public_key_p.value = data.publicKey.p;
+            public_key_g.value = data.publicKey.g;
+            public_key_y.value = data.publicKey.y;
             private_key.value = data.privateKey;
-            mod.value = data.mod;
+
         })
         .catch(error => console.error('Unable to get items.', error));
 

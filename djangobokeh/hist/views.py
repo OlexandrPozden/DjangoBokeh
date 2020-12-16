@@ -12,6 +12,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from random import randint, choice
 from outfunc.rsa import is_coprime, get_e, get_d
+from outfunc.elgamal import generate_keys, signature, legal_check
 from primesieve import *
 
 def home(request):
@@ -224,3 +225,11 @@ def rsa(request):
         print(d)
         return Response({"privateKey":d, "publicKey":e, "mod":N})
     return Response({'action':'it is finished'})
+
+
+
+
+@api_view()
+def elgamal_generate_key(request):
+    resp = generate_keys()
+    return Response(resp)
