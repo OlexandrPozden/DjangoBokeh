@@ -1,32 +1,13 @@
 const uri = 'elgamal/api/generate-key';
+const urlSign = 'elgamal/api/signature';
 const message = document.getElementById('message');
 const public_key_p = document.getElementById('public-key-p');
 const public_key_g = document.getElementById('public-key-g');
 const public_key_y = document.getElementById('public-key-y');
 const private_key = document.getElementById('private-key');
-const mod = document.getElementById('mod')
+const s1 = document.getElementById('s1');
+const s2 = document.getElementById('s2');
 const result = document.getElementById('tosave');
-
-const choose = document.getElementById('choose');
-
-function deOrEncode() {
-    if (choose.checked == true) {
-        public_key.required = false;
-        public_key.readOnly = true;
-        public_key.style.backgroundColor = '#C0C0C0';
-        private_key.required = true;
-        private_key.readOnly = false;
-        private_key.style.backgroundColor = 'inherit';
-    } else {
-
-        private_key.required = false;
-        private_key.readOnly = true;
-        private_key.style.backgroundColor = '#C0C0C0';
-        public_key.required = true;
-        public_key.readOnly = false;
-        public_key.style.backgroundColor = 'inherit';
-    }
-}
 
 
 function generateKeys() {
@@ -47,16 +28,12 @@ function generateKeys() {
 function sendItems() {
 
     const item = {
-        message: message.value,
-        key: null,
-        N: mod.value,
+        msg: message.value,
+        p: public_key_p.value,
+        g: public_key_g.value,
+        x: private_key.value
     };
-    if (choose.checked == true) {
-        item.key = private_key.value;
-    } else {
-        item.key = public_key.value;
-    }
-    fetch(uri, {
+    fetch(urlSign, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -66,7 +43,9 @@ function sendItems() {
         })
         .then(response => response.json())
         .then((data) => {
-            result.value = data.result;
+            console.log(data);
+            s1.value = data.s1;
+            s2.value = data.s2;
         })
         .catch(error => console.error('Unable to add item.', error));
 }

@@ -19,13 +19,16 @@ def generate_keys():
     return {'publicKey': {'p':p,'g':g,'y':y},'privateKey':x}
 
 def signature(msg,p,g,x):
+    p=int(p)
+    g=int(g)
+    x=int(x)
     k = Cryptodome.Util.number.getPrime(bits, randfunc=Cryptodome.Random.get_random_bytes)
     D = int.from_bytes(hashlib.sha256(msg.encode()).digest(),byteorder='big' )
-    e_1=(libnum.invmod(e, p-1))  
+    e_1=(libnum.invmod(k, p-1))  
     S_1=pow(g,k, p)
     S_2=((D-x*S_1)*e_1) % (p-1)
-    return S_1,S_2
-    #return {"signedMessage":{'s1':S_1,:'s2':S_2}}
+    #return S_1,S_2
+    return {'s1':S_1,'s2':S_2}
 
 def legal_check(msg,p,g,y,S_1,S_2):
     v_1 = (pow(y,S_1,p)*pow(S_1,S_2,p))%p

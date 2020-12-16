@@ -31,7 +31,7 @@
             <input type="file" value="UploadKey" class="key-operations upload" id="upload-private-key" style="visibility: hidden; position:absolute; left:-1000px; width:1px; height: 1px;">
             <a id="download-private-key" href=”” style="visibility: collapse; position:absolute; left:-1000px; width:1px; height: 1px;">e</a> <br><br>
             <br>
-            <input type="button" value="Sign message" style="margin-left: 97px; width: 220px; height:40px">
+            <input type="button" value="Sign message" style="margin-left: 97px; width: 220px; height:40px" onclick="sendItems()">
             <br><br>
             <label for="mod" style="margin-left:71px"><b>S1</b>:</label>
             <input type="text" name="mod" style="width:220px;" required id="s1">
@@ -41,7 +41,9 @@
             <input type="button" onclick='save()' style="width: 220px;margin-left: 97px;" value="Save this"><br>
             <input type="button" value="UploadSignedMessage" onclick="uploadSignedMessage()" style="width: 220px; margin-left: 97px;">
             <input type="file" value="UploadSignedMessage" class="key-operations upload" id="upload-signed-message" style="visibility: hidden; position:absolute; left:-1000px; width:1px; height: 1px;">
-            <br><br><br><br>
+            <br><br><br>
+            <input type="button" value="is signed by correct user" style="width: 220px; margin-left: 97px; height:40px" onclick="legalCheck()">
+            <br><br>
             <textarea rows="4" cols="50" name="outtext" readonly id="tosave"></textarea><br><br>
 
         </div>

@@ -15,6 +15,7 @@ from outfunc.rsa import is_coprime, get_e, get_d
 from outfunc.elgamal import generate_keys, signature, legal_check
 from primesieve import *
 
+
 def home(request):
     # d=counter()
     """
@@ -136,19 +137,19 @@ def cezar(request):
   </div>
 """
         p = figure(
-                x_range=k,
-        plot_width=900,
-        plot_height=400,
-        title="Histogram",
-        y_axis_label="Repeats"
-    )
+            x_range=k,
+            plot_width=900,
+            plot_height=400,
+            title="Histogram",
+            y_axis_label="Repeats"
+        )
         p.vbar(
-                x='x',
-                top='y',
-                width=0.4,
-                fill_alpha=0.7,
-                source=source
-    )
+            x='x',
+            top='y',
+            width=0.4,
+            fill_alpha=0.7,
+            source=source
+        )
         p.add_tools(hover)
         script, div = components(p)
 
@@ -198,38 +199,51 @@ def finmath(request):
 def rsa_view(request):
     return render(request, "cryptology/rsa.html")
 
+
 def elgamal_view(request):
     return render(request, "cryptology/elgamal.html")
 
-          
-@api_view(['GET','POST'])
+
+@api_view(['GET', 'POST'])
 def rsa(request):
     if request.method == 'POST':
         message = request.data['message']
         key = int(request.data['key'])
         N = int(request.data['N'])
-        result =''
+        result = ''
         for i in message:
-            result+=chr((ord(i)**key)%N)
-        return Response({"result":result})
+            result += chr((ord(i)**key) % N)
+        return Response({"result": result})
     else:
-        p = nth_prime(randint(1,100))  
-        q = nth_prime(randint(1,100))
+        p = nth_prime(randint(1, 100))
+        q = nth_prime(randint(1, 100))
         N = p*q
         phi = (p-1)*(q-1)
         e = get_e(phi, N)
         print(e)
-        d = get_d(e,phi)
-        if d==e:
-            d = get_d(e,phi,d)
+        d = get_d(e, phi)
+        if d == e:
+            d = get_d(e, phi, d)
         print(d)
-        return Response({"privateKey":d, "publicKey":e, "mod":N})
-    return Response({'action':'it is finished'})
-
-
+        return Response({"privateKey": d, "publicKey": e, "mod": N})
+    return Response({'action': 'it is finished'})
 
 
 @api_view()
 def elgamal_generate_key(request):
+
     resp = generate_keys()
+    return Response(resp)
+
+
+@api_view(['GET','POST'])
+def signature_api(request):
+    resp = {'s1':'somethin'}
+    if request.method == 'POST':
+        print('here')
+        msg = request.data['msg']
+        p = request.data['p']
+        g = request.data['g']
+        x = request.data['x']
+        resp = signature(msg, p, g, x)
     return Response(resp)
