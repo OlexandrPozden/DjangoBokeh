@@ -247,3 +247,20 @@ def signature_api(request):
         x = request.data['x']
         resp = signature(msg, p, g, x)
     return Response(resp)
+
+
+
+@api_view(['GET','POST'])
+def legal_check_api(request):
+    resp = {'s1':'somethin'}
+    print('at least dirived here')
+    if request.method == 'POST':
+        print('here')
+        msg = request.data['msg']
+        p = request.data['p']
+        g = request.data['g']
+        y = request.data['y']
+        s1 = request.data['s1']
+        s2 = request.data['s2']
+        resp = legal_check(msg, p, g, y,s1,s2)
+    return Response(resp)

@@ -1,5 +1,6 @@
 const uri = 'elgamal/api/generate-key';
 const urlSign = 'elgamal/api/signature';
+const legalcheck = 'elgamal/api/legal-check';
 const message = document.getElementById('message');
 const public_key_p = document.getElementById('public-key-p');
 const public_key_g = document.getElementById('public-key-g');
@@ -51,6 +52,32 @@ function sendItems() {
 }
 
 
+function legalCheck() {
+
+    const item = {
+        msg: message.value,
+        p: public_key_p.value,
+        g: public_key_g.value,
+        y: public_key_y.value,
+        s1: s1.value,
+        s2: s2.value,
+    };
+    console.log(item);
+    fetch(legalcheck, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(item)
+        })
+        .then(response => response.json())
+        .then((data) => {
+            console.log(data);
+            result.value = data.res;
+        })
+        .catch(error => console.error('Unable to add item.', error));
+}
 
 /// download part
 
