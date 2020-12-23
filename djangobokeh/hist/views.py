@@ -171,16 +171,16 @@ def freq(request):
         if text:
             if selected == 'en':
                 print('here')
-                outputtext = encrypt_vernam(text, key)
+                outputtext = vigener_cipher(text, key)
             elif selected == 'de':
-                outputtext = encrypt_vernam(text, key, True)
+                outputtext = vigener_cipher(text, key, True)
         else:
             uploaded1 = request.FILES['file']
             contentOfFile = uploaded1.read()
             if selected == 'en':
-                outputtext = encrypt_vernam(contentOfFile.decode("utf-8"), key)
+                outputtext = vigener_cipher(contentOfFile.decode("utf-8"), key)
             elif selected == 'de':
-                outputtext = encrypt_vernam(
+                outputtext = vigener_cipher(
                     contentOfFile.decode("utf-8"), key, True)
             text = contentOfFile.decode("utf-8")
         context['val'] = outputtext

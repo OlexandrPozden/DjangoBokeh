@@ -5,15 +5,26 @@ import libnum
 import sys
 from random import randint
 import hashlib
+from primesieve import *
 
 
 
 bits=60
 
+
+def is_coprime(x,y):
+    return np.gcd(x,y) == 1
+
+def get_k(phi, N):
+    for i in range(2, phi):
+        if is_coprime(i,phi) and is_coprime(i,N):
+            return i
+    return -1
+
 def generate_keys():
-    p = Cryptodome.Util.number.getPrime(bits, randfunc=Cryptodome.Random.get_random_bytes)
-    g = 2
-    x = randint(0, p-1)
+    p = nth_prime(randint(1,160))
+    g = randint(1,p-1)
+    x = randint(1, p-1)
     y = pow(g,x,p)
     #return p,g,y,x
     return {'publicKey': {'p':p,'g':g,'y':y},'privateKey':x}
@@ -22,12 +33,12 @@ def signature(msg,p,g,x):
     p=int(p)
     g=int(g)
     x=int(x)
-    k = Cryptodome.Util.number.getPrime(bits, randfunc=Cryptodome.Random.get_random_bytes)
+    k = randint(1,p-1)
     D = int.from_bytes(hashlib.sha256(msg.encode()).digest(),byteorder='big' )
     #e_1=(libnum.invmod(k, p-1)) 
-    e_1 = k**(-1) 
+    k_1 = k**(-1) 
     S_1=pow(g,k, p)
-    S_2=((D-x*S_1)*e_1) % (p-1)
+    S_2=((D-x*S_1)*k_1) % (p-1)
     #return S_1,S_2
     return {'s1':S_1,'s2':S_2}
 
